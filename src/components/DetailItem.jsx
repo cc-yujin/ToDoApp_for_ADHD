@@ -37,7 +37,7 @@ const CheckCircle = styled.div`
 `;
 
 const Text = styled.div`
-  // border: solid 1px red;
+  border: solid 1px red;
   width: 100%;
   font-size: 15px;
   flex: 1;
@@ -80,17 +80,17 @@ const Remove = styled.div`
   }
 `;
 
-const DetailItem = ({ detailTodo, onCheckDetail, onRemoveDetail, id }) => {
+const DetailItem = ({ detailTodo, onCheckDetail, onRemoveDetail, id, detailId,detailContent }) => {
 
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChecked = () => {
     setIsChecked(!isChecked);
-    onCheckDetail(id, detailTodo.id);
+    onCheckDetail(id, detailId);
   }
 
   const handleRemove = () => {
-    onRemoveDetail(id, detailTodo.id);
+    onRemoveDetail(id, detailId);
   }
 
   return(
@@ -104,7 +104,7 @@ const DetailItem = ({ detailTodo, onCheckDetail, onRemoveDetail, id }) => {
             <></>
           )}
     </CheckCircle>
-    <Text>{detailTodo.detailContent}</Text>
+    <Text>{detailContent}</Text>
     <Remove onClick={handleRemove}>
       <MdDelete />
     </Remove>

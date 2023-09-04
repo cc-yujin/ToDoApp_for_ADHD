@@ -32,17 +32,17 @@ const App = () => {
       content,
       priority,
       done: false,
-      detailTodo:[],
+      detailTodo: [],
     };
     console.log(newItem);
     dataId.current += 1;
     setData([...data, newItem]); // 원래 data에 newItem을 추가한다.
   };
-  console.log(data);
+  // console.log(data);
 
   const onCreateDetail = (targetId, detailContent) => {
     const newDetailItem = {
-      id: dataIdDetail.current,
+      detailId: dataIdDetail.current,
       detailContent,
       done: false,
     };
@@ -50,25 +50,36 @@ const App = () => {
     dataIdDetail.current += 1;
     console.log(targetId);
 
-    const 수정할객체 = data.find((it) => it.id === targetId);
-    console.log(`수정할객체 : ${JSON.stringify(수정할객체)}`);
-    수정할객체.detailTodo.push(newDetailItem);
-
+    const targetList = data.find((it) => it.id === targetId);
+    targetList.detailTodo.push(newDetailItem);
     setData([...data]);
-  }
+    console.log(`targetList : ${JSON.stringify(targetList)}`);
+  };
 
   const onRemove = (targetId) => {
-    console.log(`onRemove ${targetId}`);
     const newTodoList = data.filter((it) => it.id !== targetId);
-    console.log(newTodoList);
     setData(newTodoList);
   };
 
-  const onRemoveDetail = (targetId) => {
-    console.log('세부 항목 삭제');
-    // const newDetailList = data.detailTodo.filter((it) => it.id !== targetId);
-    // setData(newDetailList);
-  }
+  const onRemoveDetail = (targetId, targetDetailId) => {
+    const targetList = data.find((it) => it.id === targetId);
+    const newDetailList = targetList.detailTodo.filter(
+      (it) => it.detailId !== targetDetailId
+    );
+
+    setData(
+      data.map((it) =>
+        it.id === targetId ? { ...it, detailTodo: newDetailList } : it
+      )
+    );
+
+    //const updatedData = data.map((it) =>
+    //  it.id === targetId
+    //    ? { ...it, detailTodo: it.detailTodo.filter((detail) => detail.detailId !== targetDetailId) }
+    //    : it
+    // );
+    // setData(updatedData);
+  };
 
   const onEdit = (targetId, newContent, newPriority) => {
     setData(
@@ -91,7 +102,7 @@ const App = () => {
   // 잘 작동하면 아래 삭제하고 onChecked로 쓰기.
   const onCheckDetail = (targetId) => {
     console.log(data);
-  }
+  };
 
   return (
     <>
@@ -107,8 +118,7 @@ const App = () => {
           onRemoveDetail={onRemoveDetail}
           onCheckDetail={onCheckDetail}
           todoList={data}
-        >
-        </TodoList>
+        ></TodoList>
       </Template>
     </>
   );

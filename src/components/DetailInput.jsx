@@ -53,11 +53,9 @@ const DetailInput = ({ onCreateDetail, id, todoList}) => {
     setState({
       detailContent: e.target.value,
     });
-    console.log(state);
   };
 
   const handleSubmit = () => {
-    console.log(todoList.id);
     if (state.detailContent.trim().length < 1) {
       detailInput.current.focus();
       return;

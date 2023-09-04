@@ -128,8 +128,3 @@ const TodoInput = ({ onCreate }) => {
 };
 
 export default TodoInput;
-
-// 할 일을 작성하고 추가 버튼을 누르면 List에 추가 됨 (완료)
-// 선택한 우선순위가 할 일 옆에 붙음 (완료)
-// 아무것도 작성하지 않고 추가 누르면 포커스 됨 (완료)
-// input 글자 수 제한 (완료)

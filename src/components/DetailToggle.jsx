@@ -21,10 +21,11 @@ const DetailToggle = ({onCreateDetail, onRemoveDetail, onCheckDetail , id, todoL
   return (
     <DetailToggleBlock>
       <DetailInput onCreateDetail={onCreateDetail} todoList={todoList} id={id}/>
-      {detailTodo.map((todo) => (
+      {detailTodo.map((detail) => (
         <DetailItem
-          key={todo.id} 
+          key={detail.id} 
           id={id}
+          {...detail}
           todoList={todoList}
           detailTodo={detailTodo}
           onCreateDetail={onCreateDetail}

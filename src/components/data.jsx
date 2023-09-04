@@ -11,14 +11,14 @@ const newItem1 = {
 // 세부항복 배열에 객체가 정상적으로 추가되는가?
 // 세부항목 객체를 삭제할 수 있는가? 
 
-const newItem = {
+const newItem2 = {
   content,
   priority,
   done: false,
   id: dataId.current,
   detailTodo:[{
     detailId: dataIdDetail.current,
-    content:'',
+    detailContent:'',
     done:false,
   },]
 }
@@ -42,7 +42,11 @@ const newItemExample2 = {
   id: 0,
   detailContent:[{
     detailId: 100,
-    content:'컴퓨터 키기',
+    detailContent:'컴퓨터 켜기',
     done:false,
-  },]
+  },{
+    detailId: 101,
+    detailContent:'VSC 켜기',
+    done:false,
+  }]
 }
