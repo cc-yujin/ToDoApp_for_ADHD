@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 
 const DetailInputBlock = styled.div`
-  // border: 1px solid brown;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -26,9 +25,9 @@ const DetailInputBlock = styled.div`
 
   button {
     display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
     width: 20px;
     height: 20px;
@@ -36,13 +35,13 @@ const DetailInputBlock = styled.div`
     border-radius: 10px;
     border: none;
     color: white;
-    font-size: 100px;
+    font-size: 20px;
     cursor: pointer;
-    padding:0;
+    padding: 0;
   }
 `;
 
-const DetailInput = ({ onCreateDetail, id, todoList}) => {
+const DetailInput = ({ onCreateDetail, id, todoList }) => {
   const detailInput = useRef();
 
   const [state, setState] = useState({

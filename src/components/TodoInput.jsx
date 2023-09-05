@@ -5,7 +5,6 @@ const TodoInputBlock = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   margin: 32px 24px 10px 24px;
 
   input {
@@ -23,11 +22,9 @@ const TodoInputBlock = styled.div`
   .add-btn {
     width: 80px;
     height: 48px;
-
     border-radius: 30px;
     background: #1d5ffa;
     border: none;
-
     color: #fff;
     font-family: Inter;
     font-size: 18px;
@@ -51,7 +48,6 @@ const TodoInputBlock = styled.div`
   .priority-btn {
     width: 80px;
     height: 48px;
-
     background: transparent;
     border: none;
     -webkit-appearance: none;
@@ -59,7 +55,6 @@ const TodoInputBlock = styled.div`
     outline: none;
     border-radius: 30px;
     cursor: pointer;
-
     text-align: center;
     font-size: 20px;
     font-weight: 600;

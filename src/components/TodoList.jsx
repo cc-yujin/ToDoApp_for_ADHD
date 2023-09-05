@@ -8,33 +8,39 @@ const TodoListBlock = styled.div`
   padding: 20px;
   border-radius: 10px;
   background: #f2f2f2;
+  overflow: hidden scroll;
 `;
 
-const TodoList = ({ todoList, onRemove, onEdit, onChecked, onCreateDetail, onRemoveDetail, onCheckDetail }) => {
+const TodoList = ({
+  todoList,
+  onRemove,
+  onEdit,
+  onChecked,
+  onCreateDetail,
+  onRemoveDetail,
+  onCheckDetail,
+}) => {
   return (
     <TodoListBlock>
       {todoList.map((todo) => (
-        <TodoItem 
+        <TodoItem
           key={todo.id}
           {...todo} // 모든 props 전달
           todoList={todoList}
-          onRemove ={onRemove}
+          onRemove={onRemove}
           onEdit={onEdit}
           onChecked={onChecked}
           onCreateDetail={onCreateDetail}
           onRemoveDetail={onRemoveDetail}
           onCheckDetail={onCheckDetail}
-          />
+        />
       ))}
     </TodoListBlock>
   );
 };
 
-
-// 기본값 -> undefined로 보낼 경우 에러 방지 (이해못함..잘 되던데)
-// TodoList.defaultProps = {
-//   TodoList: []
-// }
-
+TodoList.defaultProps = {
+  TodoList: [],
+};
 
 export default TodoList;

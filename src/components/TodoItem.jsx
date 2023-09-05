@@ -27,7 +27,6 @@ const CheckCircle = styled.div`
   justify-content: center;
   width: 22px;
   height: 22px;
-
   margin-right: 9px;
   border-radius: 16px;
   border: 2px solid #ced4da;
@@ -44,7 +43,6 @@ const CheckCircle = styled.div`
 `;
 
 const Text = styled.div`
-  // border: solid 1px red;
   font-size: 15px;
   flex: 1;
   ${(props) =>
@@ -197,7 +195,7 @@ const TodoItem = ({
             <></>
           )}
         </CheckCircle>
-        <Text >
+        <Text done={done}>
           {isEdit ? (
             <>
               <input
@@ -242,7 +240,7 @@ const TodoItem = ({
         <DetailToggle
           todoList={todoList} // 루트 데이터
           id={id}
-          detailTodo={detailTodo} // 각 아이템의 detailTodo 배열 data
+          detailTodo={detailTodo} // detailTodo 배열 data
           onCreateDetail={onCreateDetail}
           onRemoveDetail={onRemoveDetail}
           onCheckDetail={onCheckDetail}

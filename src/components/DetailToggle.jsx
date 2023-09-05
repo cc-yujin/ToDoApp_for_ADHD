@@ -6,13 +6,13 @@ import DetailItem from './DetailItem'
 const DetailToggleBlock = styled.div`
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   margin: 0 auto;
   width: 391px;
   height: 155px;
   border-radius: 10px;
   background: #dcdcdc;
+  overflow: scroll;
 `;
 
 

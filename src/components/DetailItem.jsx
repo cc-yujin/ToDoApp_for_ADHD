@@ -1,35 +1,32 @@
-import React, {useState} from 'react';
-import styled, {css} from 'styled-components';
-import {
-  MdDone,
-  MdDelete,
-} from 'react-icons/md';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { MdDone, MdOutlineRemove } from 'react-icons/md';
 
 const DetailItemBlock = styled.div`
-  border: 1px solid pink;
   display: flex;
   align-items: center;
-  width: 315px;
-  height: 49px;
+  width: 320px;
+  height: 40px;
+  margin-bottom: 5px;
+  padding: 0;
 `;
 
 const CheckCircle = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-
-  margin-right: 9px;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
   border-radius: 16px;
-  border: 2px solid #ced4da;
+  border: 1px solid #ced4da;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   background: #f5f5f5;
   cursor: pointer;
   ${(props) =>
-    props.done &&
+    props.detailDone &&
     css`
       border: 1px solid #6793fc;
       background: #1d5ffa;
@@ -37,12 +34,18 @@ const CheckCircle = styled.div`
 `;
 
 const Text = styled.div`
-  border: solid 1px red;
-  width: 100%;
-  font-size: 15px;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  width: 313px;
+  height: 28px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(209, 209, 209, 0.1);
+  font-size: 13px;
   flex: 1;
   ${(props) =>
-    props.done &&
+    props.detailDone &&
     css`
       color: #767676;
       text-decoration: line-through;
@@ -57,59 +60,63 @@ const Text = styled.div`
     &:focus {
       outline: none;
     }
-
-
   }
 `;
 
 const Remove = styled.div`
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 23px;
-  height: 23px;
-  font-size: 20px;
-  color: #fff;
+  margin-left: 7px;
+
+  width: 21px;
+  height: 21px;
   background: #ffac2f;
-  margin-right: 5px;
-  border-radius: 5px;
-  &:hover {
-    background-color: #ef9f28;
-  }
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
 `;
 
-const DetailItem = ({ detailTodo, onCheckDetail, onRemoveDetail, id, detailId,detailContent }) => {
-
+const DetailItem = ({
+  id,
+  detailId,
+  detailContent,
+  detailDone,
+  onCheckDetail,
+  onRemoveDetail,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChecked = () => {
     setIsChecked(!isChecked);
     onCheckDetail(id, detailId);
-  }
+  };
 
   const handleRemove = () => {
     onRemoveDetail(id, detailId);
-  }
+  };
 
-  return(
-  <DetailItemBlock>
-    <CheckCircle onClick={handleChecked}>
-    {isChecked ? (
-            <>
-              <MdDone />
-            </>
-          ) : (
-            <></>
-          )}
-    </CheckCircle>
-    <Text>{detailContent}</Text>
-    <Remove onClick={handleRemove}>
-      <MdDelete />
-    </Remove>
-  </DetailItemBlock>
-
-)};
+  return (
+    <DetailItemBlock>
+      <CheckCircle onClick={handleChecked} detailDone={detailDone}>
+        {isChecked ? (
+          <>
+            <MdDone />
+          </>
+        ) : (
+          <></>
+        )}
+      </CheckCircle>
+      <Text detailDone={detailDone}>{detailContent}</Text>
+      <Remove onClick={handleRemove}>
+        <MdOutlineRemove />
+      </Remove>
+    </DetailItemBlock>
+  );
+};
 
 export default DetailItem;
